@@ -1,0 +1,89 @@
+###
+#create table
+POST http://127.0.0.1:8000/api/table/
+Content-Type: application/json
+
+{
+    "title":"T2"
+}
+
+###
+#list all tables
+GET http://127.0.0.1:8000/api/table/
+
+###
+#fetch table detail
+GET http://127.0.0.1:8000/api/table/1/
+
+###
+#update table detail
+PUT http://127.0.0.1:8000/api/table/1/
+Content-Type: application/json
+
+{
+    "title":"T2"
+}
+
+###
+#create category
+POST http://127.0.0.1:8000/api/category/
+Content-Type: application/json
+
+{
+    "name":"desserts"
+}
+
+###
+#list all categories
+GET http://127.0.0.1:8000/api/category/
+
+###
+#fetch category detail
+GET http://127.0.0.1:8000/api/category/1/
+
+###
+#add products ina specific category
+POST http://127.0.0.1:8000/api/category/2/products/
+Content-Type: application/json
+
+{
+    "title":"Fried Rice",
+    "price":"200"
+}
+
+###
+#list all products or list al products in a specific category
+GET http://127.0.0.1:8000/api/products?category=Starters
+
+
+###
+#update product
+PUT http://127.0.0.1:8000/api/products/2/
+Content-Type: application/json
+
+{
+    "title":"Fried Rice",
+    "price":"250"
+}
+
+###
+#create user
+POST http://127.0.0.1:8000/api/users/
+Content-Type: application/json
+
+{
+    "username":"navya",
+    "email":"navya@gmail.com",
+    "password":"Password@123"
+}
+
+###
+#create token
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+    "username":"navya",
+    "password":"Password@123"
+}
+
