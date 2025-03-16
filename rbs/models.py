@@ -3,7 +3,10 @@ from django.db import models
 # Create your models here.
 class Table(models.Model):
     title=models.CharField(max_length=50)
-    status=models.BooleanField(default=True)
+    table_status=models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
 
 class Category(models.Model):
     name=models.CharField(max_length=100,unique=True)
@@ -23,8 +26,9 @@ class Order(models.Model):
     status=models.BooleanField(default=False)
     phone=models.CharField(max_length=15)
     table_object=models.ForeignKey(Table,on_delete=models.CASCADE,related_name="orders")
+    total=models.DecimalField(max_digits=8,decimal_places=2,null=True)
 
 class OrderItems(models.Model):
-    qty=models.DecimalField(max_digits=7,decimal_places=3)
+    qty=models.DecimalField(max_digits=7,decimal_places=3,default=0.0)
     order_object=models.ForeignKey(Order,on_delete=models.CASCADE,related_name="items")
-    product_obj=models.ForeignKey(Product,on_delete=models.CASCADE)
+    product_object=models.ForeignKey(Product,on_delete=models.CASCADE)

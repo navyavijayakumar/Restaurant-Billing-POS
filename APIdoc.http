@@ -1,10 +1,33 @@
+
+###
+#create user
+POST http://127.0.0.1:8000/api/users/
+Content-Type: application/json
+
+{
+    "username":"navya",
+    "email":"navya@gmail.com",
+    "password":"Password@123"
+}
+
+###
+#create token
+POST http://127.0.0.1:8000/api/token/
+Content-Type: application/json
+
+{
+    "username":"navya",
+    "password":"Password@123"
+}
+
+
 ###
 #create table
 POST http://127.0.0.1:8000/api/table/
 Content-Type: application/json
 
 {
-    "title":"T2"
+    "title":"T4"
 }
 
 ###
@@ -21,7 +44,7 @@ PUT http://127.0.0.1:8000/api/table/1/
 Content-Type: application/json
 
 {
-    "title":"T2"
+    "title":"T4"
 }
 
 ###
@@ -52,7 +75,7 @@ Content-Type: application/json
 }
 
 ###
-#list all products or list al products in a specific category
+#list all products or list all products in a specific category
 GET http://127.0.0.1:8000/api/products?category=Starters
 
 
@@ -66,24 +89,33 @@ Content-Type: application/json
     "price":"250"
 }
 
+
 ###
-#create user
-POST http://127.0.0.1:8000/api/users/
+#create an order
+POST http://127.0.0.1:8000/api/table/4/orders/
 Content-Type: application/json
 
 {
-    "username":"navya",
-    "email":"navya@gmail.com",
-    "password":"Password@123"
+    "phone":9876543222
 }
 
+
 ###
-#create token
-POST http://127.0.0.1:8000/api/token/
+#add orderitems
+POST http://127.0.0.1:8000/api/orders/6/items/
 Content-Type: application/json
 
 {
-    "username":"navya",
-    "password":"Password@123"
+    "qty":2,
+    "product_object":1
 }
+
+###
+#retrieve order detail
+GET http://127.0.0.1:8000/api/orders/4/
+
+
+###
+#generate bill
+PATCH  http://127.0.0.1:8000/api/orders/7/generate-bill/
 
